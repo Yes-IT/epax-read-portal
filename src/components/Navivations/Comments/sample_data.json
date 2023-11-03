@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "parent": 0,
+      "droppable": false,
+      "text": "Comments",
+      "data": {
+        "fileType": "comments"
+      }
+    },
+    {
+      "id": 2,
+      "parent": 1,
+      "droppable": true,
+      "text": "Pin"
+     
+    },
+    {
+      "id": 3,
+      "parent": 1,
+      "droppable": true,
+      "text": "Sharings"
+    },
+    {
+      "id": 4,
+      "parent": 1,
+      "droppable": true,
+      "text": "Publishings"
+    },
+    {
+      "id": 5,
+      "parent": 1,
+      "droppable": true,
+      "text": "Favorites"
+    },
+    {
+        "id": 6,
+        "parent": 1,
+        "droppable": true,
+        "text": "Votes"
+      },
+      {
+        "id": 7,
+        "parent": 1,
+        "droppable": true,
+        "text": "Comments"
+      },
+      {
+        "id": 8,
+        "parent": 1,
+        "droppable": true,
+        "text": "Trash"
+      },
+    {
+      "id": 9,
+      "parent": 8,
+      "droppable": false,
+      "text": "File 2-1-1",
+      "data": {
+        "fileType": "image",
+        "fileSize": "2.1MB"
+      }
+    },
+    {
+      "id": 10,
+      "parent": 8,
+      "droppable": false,
+      "text": "File 3",
+      "data": {
+        "fileType": "image",
+        "fileSize": "0.8MB"
+      }
+    }
+  ]
