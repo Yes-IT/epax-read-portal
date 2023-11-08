@@ -1,5 +1,5 @@
-import React, { useContext,useEffect } from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import firebase from "../config/firebase";
 import AppContext from "../store/AppContext";
 import Search from "./Search";
@@ -9,29 +9,19 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 
 import AdbIcon from "@mui/icons-material/Adb";
-
-import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import Account from "./Account";
 import LanguageIcon from "@mui/icons-material/Language";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
-import HttpApi from 'i18next-http-backend'
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18next from "../i18n";
 import logger from '../utils/log4js/config';
 
 const languages = [
@@ -45,29 +35,25 @@ const languages = [
     name: "English",
     country_code: "gb",
   },
-  
+
 ];
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-export default function AppControls() {
-;
 
+export default function AppControls() {
   const currentLanguageCode = "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
-  const [isLoggedIn, user] = useContext(AppContext);
+  const [user] = useContext(AppContext);
   const history = useHistory();
+
   useEffect(() => {
-   // console.log('Setting page stuff')
     document.body.dir = currentLanguage.dir || 'ltr'
     document.title = t('inbox')
+
     // log for testing
     logger.debug("Some debug messages");
-
-    
   }, [currentLanguage, t])
-
-
 
   function logout() {
     firebase
@@ -80,6 +66,7 @@ export default function AppControls() {
         console.log(e.response.data);
       });
   }
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElLang, setAnchorElLang] = React.useState(null);
@@ -87,10 +74,12 @@ export default function AppControls() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
     console.log(event.target);
   };
+
   const handleOpenLangMenu = (event) => {
     setAnchorElLang(event.currentTarget);
     console.log(event.target);
@@ -99,6 +88,7 @@ export default function AppControls() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  
   const handleCloseLangMenu = () => {
     setAnchorElLang(null);
   };
@@ -180,8 +170,8 @@ export default function AppControls() {
         <Search className="py-10 bg-gray-600 text-white flex justify-between" />
       </Box>
       <Box sx={{ flexGrow: 1 }} />
-      <Box   justifyContent="center"   alignItems="center"
-sx={{ display: { xs: "none", md: "flex" } }}>
+      <Box justifyContent="center" alignItems="center"
+        sx={{ display: { xs: "none", md: "flex" } }}>
         <Tooltip title="Open settings">
           <IconButton
             onClick={handleOpenUserMenu}
@@ -190,9 +180,7 @@ sx={{ display: { xs: "none", md: "flex" } }}>
             edge="end"
             aria-label="current user"
             style={{ outline: "none" }}
-            //aria-controls={menuId}
             aria-haspopup="true"
-            //onClick={handleProfileMenuOpen}
             color="inherit"
           >
             <Avatar alt={user.id} src="/static/images/avatar/2.jpg" />
@@ -223,25 +211,8 @@ sx={{ display: { xs: "none", md: "flex" } }}>
           variant="text"
           color="inherit"
         >
-          <LanguageIcon  />
+          <LanguageIcon />
         </IconButton>
-
-        {/* <Tooltip title="Open settings">
-              <IconButton 
-              onClick={handleOpenUserMenu} 
-              sx={{ p: 2 }}
-              size="large"
-              edge="end"
-              aria-label="current user"
-              //aria-controls={menuId}
-              aria-haspopup="true"
-              //onClick={handleProfileMenuOpen}
-              color="inherit"
-              >
-             {/* <Avatar alt={user.id} src="/static/images/avatar/2.jpg" />    */}
-        {/* <AccountCircle /> 
-              </IconButton>
-            </Tooltip> */}
         <Menu
           sx={{ mt: "45px" }}
           id="menu-appbar"
@@ -294,25 +265,6 @@ sx={{ display: { xs: "none", md: "flex" } }}>
           ))}
         </Menu>
       </Box>
-
-      {/* <ul className="flex justify-between px-10">
-        <li>
-          {isLoggedIn ? (
-            <button onClick={logout}>Logout</button>
-          ) : (
-            <NavLink to="/login" activeClassName="underline text-blue-200">
-              Login
-            </NavLink>
-          )}
-        </li>
-        {!isLoggedIn && (
-          <li className="ml-5">
-            <NavLink to="/signup" activeClassName="underline text-blue-200">
-              SignUp
-            </NavLink>
-          </li>
-        )}
-      </ul> */}
     </>
   );
 }

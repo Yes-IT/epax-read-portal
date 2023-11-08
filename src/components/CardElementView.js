@@ -7,28 +7,21 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import { SettingsPhoneTwoTone } from '@mui/icons-material';
 
-export default function ResponsiveDialog({closeMenuHandler,reSetPin}) {
+export default function ResponsiveDialog({ closeMenuHandler, reSetPin }) {
   const [open, setOpen] = React.useState(true);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     closeMenuHandler();
     setOpen(false);
     reSetPin(false);
-   
   };
-  const youtybe = "https://www.youtube.com/embed/b4i7j6U7Ul8";
-  const image = "https://www.google.com/imgae";
-  return (  
+
+  return (
     <div>
-    
+
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -40,13 +33,10 @@ export default function ResponsiveDialog({closeMenuHandler,reSetPin}) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-          <div>
-          <iframe src="https://www.google.com/imgage" width="100%"
-       height="100%" sandbox="allow-scripts allow-same-origin
-       allow-presentation" loading='lazy'></iframe>
-          if you can see this please click here to access the site directly
-          
-          </div>
+            <div>
+              <iframe src="https://www.google.com/imgage" width="100%" height="100%" sandbox="allow-scripts allow-same-origin allow-presentation" loading='lazy' title='Iframe'></iframe>
+              if you can see this please click here to access the site directly
+            </div>
             Let Google help apps determine location. This means sending anonymous
             location data to Google, even when no apps are running.
           </DialogContentText>

@@ -1,5 +1,4 @@
 import React from "react";
-import FolderIcon from "@mui/icons-material/Folder";
 import ImageIcon from "@mui/icons-material/Image";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -17,11 +16,8 @@ import CommentsIcon from '@mui/icons-material/Notes';
 import VotesIcon from '@mui/icons-material/ThumbsUpDown';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import AllInboxIcon from '@mui/icons-material/AllInbox';
-export const TypeIcon = (props) => {
- // if (props.droppable) {
- //   return <FolderIcon />;
- // }
 
+export const TypeIcon = (props) => {
   switch (props.fileType) {
     case "image":
       return <ImageIcon />;
@@ -50,9 +46,9 @@ export const TypeIcon = (props) => {
     case "comments":
       return <CommentsIcon />;
     case "votes":
-        return <VotesIcon />;
+      return <VotesIcon />;
     case "trash":
-        return <DeleteSweepIcon />;
+      return <DeleteSweepIcon />;
     case "inbox":
       return <AllInboxIcon />;
     default:

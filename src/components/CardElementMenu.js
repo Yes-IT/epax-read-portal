@@ -20,13 +20,7 @@ import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import BlurLinearIcon from '@mui/icons-material/BlurLinear';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Typography from '@mui/material/Typography';
-import ContentCut from '@mui/icons-material/ContentCut';
-import ContentCopy from '@mui/icons-material/ContentCopy';
-import ContentPaste from '@mui/icons-material/ContentPaste';
-import Cloud from '@mui/icons-material/Cloud';
 import CardElementView from './CardElementView';
-import zIndex from '@mui/material/styles/zIndex';
 
 export default function MenuListComposition() {
   const [open, setOpen] = React.useState(false);
@@ -42,7 +36,7 @@ export default function MenuListComposition() {
     setOpen(false);
   };
   const openPin = (event) => {
-    if(event.target.innerHTML==="Pin"){
+    if (event.target.innerHTML === "Pin") {
       setShowPin(true);
     }
   };
@@ -69,21 +63,6 @@ export default function MenuListComposition() {
   return (
     <Stack direction="row" spacing={2}>
       <div>
-        {/* <IconButton aria-label="settings">
-          <PushPinIcon />
-        </IconButton>
-        <IconButton aria-label="settings">
-          <IosShareIcon />
-        </IconButton>
-        <IconButton aria-label="settings">
-          <ShareIcon />
-        </IconButton>
-        <IconButton aria-label="settings">
-          <LoyaltyIcon />
-        </IconButton>
-        <IconButton aria-label="add to favorites">
-          <AddCommentIcon />
-        </IconButton> */}
         <Tooltip title="Open settings">
           <IconButton
             ref={anchorRef}
@@ -103,7 +82,7 @@ export default function MenuListComposition() {
           placement="bottom-start"
           transition
           disablePortal
-          style={{zIndex: "9"}}
+          style={{ zIndex: "9" }}
         >
           {({ TransitionProps, placement }) => (
             <Grow
@@ -120,9 +99,8 @@ export default function MenuListComposition() {
                     id="composition-menu"
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
-                    
                   >
-                   <MenuItem onClick={openPin}>
+                    <MenuItem onClick={openPin}>
                       <ListItemIcon>
                         <PushPinIcon fontSize="small" />
                       </ListItemIcon>
@@ -179,17 +157,13 @@ export default function MenuListComposition() {
                       </ListItemIcon>
                       <ListItemText>Remove</ListItemText>
                     </MenuItem>
-                    
                   </MenuList>
-                  
                 </ClickAwayListener>
               </Paper>
             </Grow>
           )}
         </Popper>
-
       </div>
     </Stack>
-    
   );
 }

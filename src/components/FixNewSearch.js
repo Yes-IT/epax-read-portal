@@ -1,14 +1,14 @@
-import React, {useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import useDebounce from "../utils/hooks/useDebounce";
 import SearchContext from "../store/SearchContext";
 
 export default function Search() {
-  const {searchTerm, setSearchTerm } = useContext(SearchContext);
+  const { setSearchTerm } = useContext(SearchContext);
   const debounce = useDebounce();
+  
   function handleInput(e) {
     const text = e.target.value;
-    debounce(() =>setSearchTerm(text));
-
+    debounce(() => setSearchTerm(text));
   }
 
   return (

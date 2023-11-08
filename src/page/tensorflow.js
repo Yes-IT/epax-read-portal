@@ -14,6 +14,7 @@ export default function Tensorflow() {
           width="400"
           crossOrigin="anonymous"
           ref={imageRef}
+          alt=""
         />
         <div className="text-center my-5">
           {predictions.length > 0 &&

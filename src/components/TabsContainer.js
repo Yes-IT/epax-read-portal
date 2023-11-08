@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import CardElements from './CardElements';
 let maxTabIndex = 0;
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -30,7 +31,6 @@ TabPanel.propTypes = {
 };
 
 export default function BasicTabs() {
-  
   const [tabIndex, setTabIndex] = React.useState(0);
   const [deletTabIndex, setDeleteTabIndex] = React.useState(-1);
   const [tabs, setTabs] = React.useState([]);
@@ -42,6 +42,7 @@ export default function BasicTabs() {
 
   React.useEffect(() => {
     removeTab();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletTabIndex]);
 
   function generateTab(label) {
@@ -63,56 +64,55 @@ export default function BasicTabs() {
       return <Tab label={`${label} - ${maxTabIndex}`} value={maxTabIndex} />;
     }
   }
+
   const addTab = (label) => {
     setTabs([...tabs, generateTab(label)]);
     setTabPanels([
       ...tabPanels,
       <TabPanel value={maxTabIndex} index={maxTabIndex}>
-       {maxTabIndex===0 &&  <CardElements />}
-       {maxTabIndex!==0 &&  <>
-       <Box>
-        abc
-       </Box>
-       <Box>
-        abcdef
-       </Box>
-       </>
-       }
-        {/* maxTabIndex = {maxTabIndex}
-        tabIndex = {tabIndex}
-        value = {tabIndex}
-        index = {tabIndex} */}
+        {maxTabIndex === 0 && <CardElements />}
+        {maxTabIndex !== 0 && <>
+          <Box>
+            abc
+          </Box>
+          <Box>
+            abcdef
+          </Box>
+        </>
+        }
       </TabPanel>
     ]);
     maxTabIndex++;
   };
+
   const handleTabClose = (e, value) => {
-    //console.log(e.currentTarget.getAttribute("value"));
     setDeleteTabIndex(e.currentTarget.getAttribute("value"));
   };
 
   const removeTab = () => {
     setTabs(
       tabs.map((tab) => {
-        //console.log(tab.props.value + " " + deletTabIndex);
         if (tab && Number(tab.props.value) !== Number(deletTabIndex)) {
           return tab;
         }
+
+        return null;
       })
     );
+
     setTabPanels(
       tabPanels.map((tabPanel) => {
-        //console.log(tab.props.value + " " + deletTabIndex);
-        if (
-          tabPanel &&
-          Number(tabPanel.props.value) !== Number(deletTabIndex)
-        ) {
+        if (tabPanel && Number(tabPanel.props.value) !== Number(deletTabIndex)) {
           return tabPanel;
         }
+
+        return null;
       })
     );
+
     setTabIndex(0);
   };
+
   const handleAddTab = (e, value) => {
     addTab("New Tab ");
   };

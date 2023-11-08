@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import firebase from "../config/firebase";
 import { useHistory } from "react-router-dom";
-import { useFormik, Formik, Form, ErrorMessage, Field } from "formik";
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 
 export default function SignUp() {
@@ -54,11 +54,7 @@ export default function SignUp() {
                 type="submit"
                 className="p-2 rounded shadow w-full bg-gradient-to-tr from-yellow-600 to-yellow-400 text-black"
               >
-                {/* {isLoading ? (
-                <i className="fas fa-circle-notch fa-spin"></i>
-              ) : ( */}
                 Sign Up
-                {/* )} */}
               </button>
             </div>
           </Form>

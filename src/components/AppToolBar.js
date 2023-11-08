@@ -4,11 +4,11 @@ import AppControls from "./AppControls";
 
 
 function AppToolBar() {
- 
+
   return (
-        <Toolbar disableGutters>
-          <AppControls />
-        </Toolbar>
+    <Toolbar disableGutters>
+      <AppControls />
+    </Toolbar>
   );
 }
 export default AppToolBar;

@@ -4,7 +4,7 @@ import firebase from "../config/firebase";
 import AppContext from "../store/AppContext";
 import FixNewSearch from "./FixNewSearch";
 export default function Header() {
-  const [isLoggedIn, user] = useContext(AppContext);
+  const [isLoggedIn] = useContext(AppContext);
   const history = useHistory();
 
   function logout() {
@@ -22,13 +22,13 @@ export default function Header() {
   return (
     <nav className="py-5 bg-gray-900 text-white flex justify-between">
       <ul className="flex justify-between px-10">
-      <li className="mr-5">
+        <li className="mr-5">
           <NavLink to="/" exact activeClassName="underline text-blue-200">
             Logo
           </NavLink>
         </li>
         <li className="mr-5">
-        <FixNewSearch />
+          <FixNewSearch />
         </li>
       </ul>
       <ul className="flex justify-between px-10">
